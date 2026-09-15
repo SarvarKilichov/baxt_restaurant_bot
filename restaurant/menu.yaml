@@ -1,0 +1,301 @@
+# ═══════════════════════════════════════════════════════════════════════
+#  МЕНЮ РЕСТОРАНА
+#
+#  Категории и блюда показываются в том порядке, в котором написаны.
+#
+#  Поля блюда:
+#    id           уникальный код латиницей, например plov (после запуска не меняйте)
+#    name         название
+#    description  описание или состав
+#    price        цена — только число, без пробелов
+#    old_price    старая цена, будет зачёркнута (необязательно)
+#    weight       вес, объём или количество (необязательно)
+#    photo        ссылка на фото или файл из папки restaurant/images (необязательно)
+#    spicy        острота от 0 до 3 (необязательно)
+#    badges       метки: hit — хит, new — новинка, vegetarian — вегетарианское (необязательно)
+#
+#  Чтобы новое блюдо появилось в боте — перезапустите бота или нажмите
+#  «🔄 Обновить данные из файлов» в панели /admin.
+#  Временно убрать блюдо из продажи можно в боте: /admin → ⛔ Стоп-лист
+# ═══════════════════════════════════════════════════════════════════════
+
+categories:
+  - id: national
+    name:
+      ru: "🍲 Национальные блюда"
+      uz: "🍲 Milliy taomlar"
+    items:
+      - id: plov
+        name:
+          ru: "Ташкентский плов"
+          uz: "Toshkent oshi"
+        description:
+          ru: "Рис девзира, нежная баранина, жёлтая морковь, нут, перепелиное яйцо и казы"
+          uz: "Devzira guruch, yumshoq qo'y go'shti, sariq sabzi, no'xat, bedana tuxumi va qazi"
+        price: 55000
+        weight: { ru: "400 г", uz: "400 g" }
+        photo: "https://images.unsplash.com/photo-1785571903557-dce44dcf3eab?w=800&q=80&fm=jpg&fit=crop"
+        badges: [hit]
+
+      - id: lagman
+        name:
+          ru: "Лагман"
+          uz: "Lag'mon"
+        description:
+          ru: "Лапша ручной тянки, говядина, болгарский перец, редька, чеснок и острый соус"
+          uz: "Qo'lda cho'zilgan lag'mon, mol go'shti, bolgar qalampiri, turp, sarimsoq va achchiq sous"
+        price: 42000
+        weight: { ru: "450 г", uz: "450 g" }
+        spicy: 1
+        photo: "https://images.unsplash.com/photo-1504669221159-56caf7b07f57?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: manti
+        name:
+          ru: "Манты"
+          uz: "Manti"
+        description:
+          ru: "Сочные манты на пару с рубленой бараниной и луком, подаются со сметаной"
+          uz: "Qiyma qo'y go'shti va piyozli bug'da pishgan shirali manti, qaymoq bilan"
+        price: 40000
+        weight: { ru: "4 шт", uz: "4 dona" }
+        photo: "https://images.unsplash.com/photo-1783699373378-4232eab55fba?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: samsa
+        name:
+          ru: "Самса с говядиной"
+          uz: "Mol go'shtli somsa"
+        description:
+          ru: "Слоёное тесто из тандыра, рубленая говядина, лук и зира"
+          uz: "Tandirda pishgan qatlama xamir, qiyma mol go'shti, piyoz va zira"
+        price: 12000
+        weight: { ru: "1 шт", uz: "1 dona" }
+        photo: "https://images.unsplash.com/photo-1601050690597-df0568f70950?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: shashlik
+        name:
+          ru: "Шашлык из баранины"
+          uz: "Qo'y go'shtidan kabob"
+        description:
+          ru: "Маринованная баранина на углях, подаётся с луком и зеленью"
+          uz: "Cho'g'da pishirilgan marinadlangan qo'y go'shti, piyoz va ko'katlar bilan"
+        price: 38000
+        old_price: 45000
+        weight: { ru: "1 шампур, 180 г", uz: "1 six, 180 g" }
+        photo: "https://images.unsplash.com/photo-1747253255646-3bffa4565a7a?w=800&q=80&fm=jpg&fit=crop"
+
+  - id: pizza
+    name:
+      ru: "🍕 Пицца"
+      uz: "🍕 Pitsa"
+    items:
+      - id: margherita
+        name:
+          ru: "Маргарита"
+          uz: "Margarita"
+        description:
+          ru: "Томатный соус, моцарелла и свежий базилик"
+          uz: "Pomidor sousi, motsarella va yangi rayhon"
+        price: 65000
+        weight: { ru: "30 см", uz: "30 sm" }
+        photo: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800&q=80&fm=jpg&fit=crop"
+        badges: [vegetarian]
+
+      - id: pepperoni
+        name:
+          ru: "Пепперони"
+          uz: "Pepperoni"
+        description:
+          ru: "Томатный соус, моцарелла и пикантная говяжья пепперони"
+          uz: "Pomidor sousi, motsarella va achchiqroq mol go'shtli pepperoni"
+        price: 79000
+        weight: { ru: "30 см", uz: "30 sm" }
+        spicy: 1
+        photo: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=800&q=80&fm=jpg&fit=crop"
+        badges: [hit]
+
+      - id: diablo
+        name:
+          ru: "Диабло"
+          uz: "Diablo"
+        description:
+          ru: "Для любителей огня: томатный соус, моцарелла, острая салями, халапеньо и перец чили"
+          uz: "Achchiqni sevuvchilar uchun: pomidor sousi, motsarella, achchiq salyami, xalapenyo va chili qalampiri"
+        price: 85000
+        weight: { ru: "30 см", uz: "30 sm" }
+        spicy: 3
+        photo: "https://images.unsplash.com/photo-1576458088443-04a19bb13da6?w=800&q=80&fm=jpg&fit=crop"
+        badges: [new]
+
+  - id: burgers
+    name:
+      ru: "🍔 Бургеры"
+      uz: "🍔 Burgerlar"
+    items:
+      - id: classic-burger
+        name:
+          ru: "Классический бургер"
+          uz: "Klassik burger"
+        description:
+          ru: "Говяжья котлета, сыр чеддер, свежие овощи и фирменный соус"
+          uz: "Mol go'shtli kotlet, chedder pishlog'i, yangi sabzavotlar va maxsus sous"
+        price: 48000
+        weight: { ru: "320 г", uz: "320 g" }
+        photo: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: jalapeno-burger
+        name:
+          ru: "Бургер «Халапеньо»"
+          uz: "«Xalapenyo» burger"
+        description:
+          ru: "Говяжья котлета, чеддер, халапеньо, маринованный лук и острый соус чипотле"
+          uz: "Mol go'shtli kotlet, chedder, xalapenyo, marinadlangan piyoz va achchiq chipotle sousi"
+        price: 54000
+        weight: { ru: "340 г", uz: "340 g" }
+        spicy: 2
+        photo: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80&fm=jpg&fit=crop"
+
+  - id: salads-soups
+    name:
+      ru: "🥗 Салаты и супы"
+      uz: "🥗 Salat va sho'rvalar"
+    items:
+      - id: caesar
+        name:
+          ru: "Цезарь с курицей"
+          uz: "Tovuqli Sezar"
+        description:
+          ru: "Романо, куриное филе гриль, пармезан, гренки и соус цезарь"
+          uz: "Romano, grilda pishgan tovuq filesi, parmezan, suxariklar va sezar sousi"
+        price: 45000
+        weight: { ru: "250 г", uz: "250 g" }
+        photo: "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: achichuk
+        name:
+          ru: "Салат «Ачичук»"
+          uz: "«Achchiq-chuchuk» salati"
+        description:
+          ru: "Помидоры, огурцы, красный лук, острый перец и базилик"
+          uz: "Pomidor, bodring, qizil piyoz, achchiq qalampir va rayhon"
+        price: 18000
+        weight: { ru: "250 г", uz: "250 g" }
+        spicy: 1
+        photo: "https://images.unsplash.com/photo-1602093811733-7aca4b7d32ca?w=800&q=80&fm=jpg&fit=crop"
+        badges: [vegetarian]
+
+      - id: shurpa
+        name:
+          ru: "Шурпа"
+          uz: "Sho'rva"
+        description:
+          ru: "Наваристый бульон из баранины с картофелем, морковью и зеленью"
+          uz: "Qo'y go'shtidan quyuq sho'rva: kartoshka, sabzi va ko'katlar"
+        price: 35000
+        weight: { ru: "400 мл", uz: "400 ml" }
+        photo: "https://images.unsplash.com/photo-1708782344137-21c48d98dfcc?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: tom-yum
+        name:
+          ru: "Том ям с креветками"
+          uz: "Krevetkali Tom yam"
+        description:
+          ru: "Острый тайский суп на кокосовом молоке с креветками, грибами и лемонграссом"
+          uz: "Kokos sutidagi achchiq Tailand sho'rvasi: krevetka, qo'ziqorin va limon o'ti"
+        price: 69000
+        weight: { ru: "350 мл", uz: "350 ml" }
+        spicy: 3
+        photo: "https://images.unsplash.com/photo-1777828827870-92e3069424bd?w=800&q=80&fm=jpg&fit=crop"
+
+  - id: snacks
+    name:
+      ru: "🍗 Закуски"
+      uz: "🍗 Gazaklar"
+    items:
+      - id: hot-wings
+        name:
+          ru: "Острые крылышки"
+          uz: "Achchiq qanotchalar"
+        description:
+          ru: "Хрустящие куриные крылышки в остром соусе, подаются с сырным соусом"
+          uz: "Achchiq sousdagi qarsildoq tovuq qanotchalari, pishloqli sous bilan"
+        price: 42000
+        weight: { ru: "8 шт", uz: "8 dona" }
+        spicy: 3
+        photo: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=800&q=80&fm=jpg&fit=crop"
+        badges: [hit]
+
+      - id: fries
+        name:
+          ru: "Картофель фри"
+          uz: "Kartoshka fri"
+        description:
+          ru: "Хрустящий картофель фри с солью и кетчупом"
+          uz: "Tuz va ketchup bilan qarsildoq kartoshka fri"
+        price: 18000
+        weight: { ru: "150 г", uz: "150 g" }
+        photo: "https://images.unsplash.com/photo-1598679253544-2c97992403ea?w=800&q=80&fm=jpg&fit=crop"
+        badges: [vegetarian]
+
+  - id: drinks
+    name:
+      ru: "🥤 Напитки"
+      uz: "🥤 Ichimliklar"
+    items:
+      - id: cola
+        name: "Coca-Cola"
+        description:
+          ru: "Охлаждённая Coca-Cola в стеклянной бутылке"
+          uz: "Shisha idishdagi sovutilgan Coca-Cola"
+        price: 10000
+        weight: { ru: "0,5 л", uz: "0,5 l" }
+        photo: "https://images.unsplash.com/photo-1622708862830-a026e3ef60bd?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: lemonade
+        name:
+          ru: "Домашний лимонад"
+          uz: "Uy limonadi"
+        description:
+          ru: "Лимон, мята и газированная вода — освежает в жару"
+          uz: "Limon, yalpiz va gazli suv — issiq kunda tetiklashtiradi"
+        price: 22000
+        weight: { ru: "0,5 л", uz: "0,5 l" }
+        photo: "https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9e?w=800&q=80&fm=jpg&fit=crop"
+        badges: [new]
+
+      - id: green-tea
+        name:
+          ru: "Зелёный чай"
+          uz: "Ko'k choy"
+        description:
+          ru: "Классический зелёный чай в чайнике"
+          uz: "Choynakda klassik ko'k choy"
+        price: 8000
+        weight: { ru: "чайник 0,8 л", uz: "choynak, 0,8 l" }
+        photo: "https://images.unsplash.com/photo-1729259586627-65caee1785da?w=800&q=80&fm=jpg&fit=crop"
+
+  - id: desserts
+    name:
+      ru: "🍰 Десерты"
+      uz: "🍰 Desertlar"
+    items:
+      - id: cheesecake
+        name:
+          ru: "Чизкейк «Нью-Йорк»"
+          uz: "«Nyu-York» chizkeyki"
+        description:
+          ru: "Нежный сливочный чизкейк с черничным соусом"
+          uz: "Chernika sousli yumshoq qaymoqli chizkeyk"
+        price: 32000
+        weight: { ru: "150 г", uz: "150 g" }
+        photo: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=800&q=80&fm=jpg&fit=crop"
+
+      - id: medovik
+        name:
+          ru: "Медовик"
+          uz: "Medovik"
+        description:
+          ru: "Классический медовый торт со сметанным кремом"
+          uz: "Qaymoqli krem bilan klassik asalli tort"
+        price: 28000
+        weight: { ru: "150 г", uz: "150 g" }
+        photo: "https://images.unsplash.com/photo-1624000961428-eeece184988b?w=800&q=80&fm=jpg&fit=crop"

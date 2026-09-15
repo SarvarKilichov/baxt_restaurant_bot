@@ -1,0 +1,59 @@
+# ─── Секреты (токены, ключи, пароль от базы) ───
+.env
+.env.*
+!.env.example
+
+# ─── Зависимости (восстанавливаются через npm install) ───
+node_modules/
+
+# ─── Сгенерированный код и сборки ───
+# Prisma Client — создаётся заново командой npm install (prisma generate)
+src/generated/
+# Собранный Mini App — создаётся командой npm run app:build
+miniapp/dist/
+dist/
+build/
+*.tsbuildinfo
+.vite/
+
+# ─── Логи и отладочные файлы ───
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ─── Тесты и кэш ───
+coverage/
+.nyc_output/
+.cache/
+.eslintcache
+
+# ─── Локальные базы данных (если когда-то появятся) ───
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# ─── Системные файлы macOS и Windows ───
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# ─── Настройки редакторов ───
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ─── Локальные настройки Claude Code ───
+.claude/settings.local.json
+
+# ─── Временные файлы ───
+tmp/
+temp/
+*.tmp

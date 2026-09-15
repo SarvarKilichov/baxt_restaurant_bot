@@ -1,0 +1,162 @@
+# ═══════════════════════════════════════════════════════════════════════
+#  BOT MATNLARI — O'ZBEKCHA
+#
+#  Faqat qo'shtirnoq ichidagi matnni o'zgartiring. Figurali qavs ichidagi
+#  so'zlarni — {name}, {total} va h.k. — bot o'zi qo'yadi, ularni o'chirmang.
+#  Formatlash: <b>qalin</b>, <i>kursiv</i>, <s>ustidan chizilgan</s>.
+#  Mini App ichidagi matnlar (menyu, savat, buyurtma) miniapp/src/i18n.js
+#  faylida joylashgan.
+# ═══════════════════════════════════════════════════════════════════════
+
+language:
+  name: "🇺🇿 O'zbekcha"
+  choose: "🌐 Tilni tanlang"
+  changed: "✅ Til: o'zbekcha"
+
+buttons:
+  menu: "🍽 Menyu"
+  openApp: "🍽 Menyuni ochish"
+
+commands:
+  start: "Bosh menyu"
+  admin: "Administrator paneli"
+  id: "Telegram ID ni bilish"
+
+common:
+  unknownCommand: "Bunday buyruq yo'q"
+  error: "😔 Nimadir xato ketdi. Qaytadan urinib ko'ring"
+  useText: "Iltimos, matnli xabar yuboring — restoran haqida savolga javob beraman. Buyurtma «Menyu» tugmasidagi ilovada beriladi"
+
+menu:
+  notFound: "Taom topilmadi — menyu yangilangan"
+  soldOutAlert: "😔 Bu taom vaqtincha mavjud emas"
+
+badges:
+  hit: "🔥 Xit"
+  new: "🆕 Yangi"
+  vegetarian: "🌱 Vegetarian"
+
+checkout:
+  cartEmpty: "🛒 Savat bo'sh — avval menyudan taom qo'shing"
+  paused: "😔 Buyurtma qabul qilish vaqtincha to'xtatilgan. Birozdan so'ng urinib ko'ring yoki qo'ng'iroq qiling: {phone}"
+  closed: "😔 Hozir yopiqmiz va buyurtma qabul qilmayapmiz.\n🕒 Ochilamiz: {when}"
+  minOrder: "Yetkazib berish uchun minimal buyurtma — {amount}, savatingizda esa {total}.\nYana taom qo'shing yoki olib ketishni tanlang."
+  badName: "Ismingizni yozing — 2 dan 60 gacha belgi"
+  badPhone: "Bu telefon raqamiga o'xshamaydi. Raqamni yozing, masalan +998 90 123 45 67"
+  badAddress: "Manzilni batafsilroq yozing: ko'cha, uy, xonadon"
+  location: "xaritadagi joylashuv"
+  etaDelivery: "🚚 {time} ichida yetkazamiz"
+  etaPickup: "🏃 {time} ichida tayyor bo'ladi"
+
+order:
+  delivery: "🚚 Yetkazib berish"
+  pickup: "🏃 Olib ketish"
+  name: "👤 {name}"
+  phone: "📞 {phone}"
+  address: "📍 {address}"
+  comment: "💬 {comment}"
+  payment: "To'lov: {payment}"
+  line: "• {name} × {quantity} — {total}"
+  itemsTotal: "Jami: {amount}"
+  deliveryFee: "Yetkazib berish: {amount}"
+  deliveryFree: "Yetkazib berish: bepul"
+  total: "<b>Umumiy: {amount}</b>"
+
+status:
+  NEW: "🆕 Yangi"
+  ACCEPTED: "✅ Qabul qilindi"
+  COOKING: "👨‍🍳 Tayyorlanmoqda"
+  DELIVERING: "🚚 Yo'lda"
+  READY: "🛍 Olib ketishga tayyor"
+  COMPLETED: "🏁 Bajarildi"
+  CANCELLED: "❌ Bekor qilindi"
+
+notify:
+  ACCEPTED: "✅ №{id} buyurtmangiz qabul qilindi! Tez orada tayyorlashni boshlaymiz."
+  COOKING: "👨‍🍳 №{id} buyurtmangiz tayyorlanmoqda."
+  DELIVERING: "🚚 Kuryer №{id} buyurtmangizni olib kelmoqda. Tez orada yetib boramiz!"
+  READY: "🛍 №{id} buyurtmangiz tayyor! Sizni kutamiz: {address}"
+  COMPLETED: "🎉 №{id} buyurtma bajarildi. {restaurant}ni tanlaganingiz uchun rahmat! Yoqimli ishtaha 😊"
+  CANCELLED: "😔 №{id} buyurtma bekor qilindi. Savollar bo'lsa, qo'ng'iroq qiling: {phone}"
+
+orders:
+  cannotCancel: "Buyurtma allaqachon ishga olingan. Bekor qilish uchun qo'ng'iroq qiling: {phone}"
+
+hours:
+  closed: "dam olish kuni"
+  allDay: "kecha-kunduz"
+  today: "bugun soat {time} da"
+  tomorrow: "ertaga soat {time} da"
+  onDay: "{day} kuni soat {time} da"
+  daysShort: ["Du", "Se", "Ch", "Pa", "Ju", "Sh", "Ya"]
+  daysOn: ["dushanba", "seshanba", "chorshanba", "payshanba", "juma", "shanba", "yakshanba"]
+
+ai:
+  intro: "🤖 <b>AI-yordamchi</b>\nMenyu, narxlar, yetkazib berish yoki ish vaqti haqida so'rang — savolingizni chatga yozing.\n\nMasalan:"
+  disabled: "🤖 AI-yordamchi hali ulanmagan.\nQuyidagi tugma orqali menyuni oching yoki qo'ng'iroq qiling: {phone}"
+  error: "😔 Javob bera olmadim. Birozdan so'ng urinib ko'ring yoki qo'ng'iroq qiling: {phone}"
+  limit: "Siz ketma-ket juda ko'p savol berdingiz. Keyinroq urinib ko'ring yoki qo'ng'iroq qiling: {phone}"
+  tooLong: "Savol juda uzun — iltimos, qisqaroq yozing"
+
+admin:
+  noAccess: "⛔ Ruxsat yo'q"
+  ids: "🆔 Telegram ID raqamingiz: <code>{userId}</code>\nUshbu chat ID raqami: <code>{chatId}</code>"
+  panel: |
+    ⚙️ <b>Administrator paneli</b>
+
+    Buyurtma qabuli: {orders}
+    AI-yordamchi: {ai}
+    Faol buyurtmalar: <b>{active}</b>
+  ordersOn: "✅ ishlayapti"
+  ordersOff: "⏸ to'xtatilgan"
+  aiOn: "✅ ulangan"
+  aiOff: "⚠️ ulanmagan (.env faylida ANTHROPIC_API_KEY yo'q)"
+  activeOrders: "📋 Faol buyurtmalar"
+  stats: "📊 Statistika"
+  stopList: "⛔ Stop-list"
+  questions: "❓ Javobsiz savollar"
+  pause: "⏸ Buyurtma qabulini to'xtatish"
+  resume: "▶️ Buyurtma qabulini tiklash"
+  reload: "🔄 Fayllardan ma'lumotlarni yangilash"
+  back: "⬅️ Orqaga"
+  newOrder: "🆕 <b>Yangi buyurtma №{id}</b>"
+  order: "📦 <b>Buyurtma №{id}</b>"
+  createdAt: "🕒 {date}"
+  status: "Holati: <b>{status}</b>"
+  changedBy: "O'zgartirdi: {name}"
+  actions:
+    ACCEPTED: "✅ Qabul qilish"
+    COOKING: "👨‍🍳 Tayyorlanmoqda"
+    DELIVERING: "🚚 Kuryerga berildi"
+    READY: "🛍 Olib ketishga tayyor"
+    COMPLETED: "🏁 Bajarildi"
+    CANCELLED: "❌ Bekor qilish"
+  cancelConfirm: "❌ Ha, buyurtmani bekor qilish"
+  cancelKeep: "⬅️ Bekor qilmaslik"
+  statusChanged: "Tayyor: {status}"
+  statusStale: "Buyurtma holati allaqachon o'zgargan"
+  customerCancelled: "❌ Mijoz №{id} buyurtmani bekor qildi"
+  customerBlocked: "⚠️ №{id} buyurtma: mijoz botni bloklagan, xabar yetkazilmadi"
+  activeTitle: "📋 <b>Faol buyurtmalar: {count}</b>"
+  activeEmpty: "📋 Faol buyurtmalar yo'q 👌"
+  activeItem: "№{id} · {status} · {total}"
+  statsTitle: "📊 <b>Statistika — {period}</b>"
+  periods:
+    today: "bugun"
+    week: "7 kun"
+    month: "30 kun"
+  statsBody: "Buyurtmalar: <b>{count}</b>\nTushum: <b>{revenue}</b>\nO'rtacha chek: <b>{average}</b>\nBekor qilingan: {cancelled}"
+  statsTop: "🏆 <b>Mashhur taomlar</b>"
+  statsTopLine: "{place}. {name} — {quantity} ta"
+  statsEmpty: "Bu davrda buyurtmalar yo'q"
+  stopTitle: "⛔ <b>Stop-list</b>\nKategoriyani tanlang. ✅ — sotuvda, ⛔ — mavjud emas"
+  stopCategory: "⛔ <b>Stop-list: {category}</b>\nTaomni sotuvdan olish yoki qaytarish uchun ustiga bosing"
+  stopOff: "⛔ {name}: mavjud emas"
+  stopOn: "✅ {name}: yana sotuvda"
+  questionsTitle: "❓ <b>AI javob topa olmagan savollar</b>\nJavoblarni restaurant/restaurant.yaml faylidagi faq bo'limiga qo'shing va «🔄 Fayllardan ma'lumotlarni yangilash» tugmasini bosing."
+  questionsEmpty: "❓ Javobsiz savollar hozircha yo'q 👌"
+  questionLine: "• {date} — «{question}»"
+  paused: "⏸ Buyurtma qabuli to'xtatildi"
+  resumed: "▶️ Buyurtma qabuli tiklandi"
+  reloaded: "✅ Ma'lumotlar yangilandi: kategoriyalar — {categories}, taomlar — {products}"
+  reloadFailed: "❌ Ma'lumotlar yangilanmadi — fayllardagi xatolarni tuzating:\n{problems}"

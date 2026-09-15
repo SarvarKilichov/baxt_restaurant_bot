@@ -1,0 +1,48 @@
+{
+  "name": "restaurant-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram-бот и Mini App ресторана: меню, корзина, заказы и AI-помощник",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "setup": "npm run db:migrate && npm run db:seed && npm run app:install && npm run app:build",
+    "check": "node scripts/check-data.js",
+    "app:install": "npm install --prefix miniapp",
+    "app:dev": "npm run dev --prefix miniapp",
+    "app:build": "npm run build --prefix miniapp",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate deploy",
+    "db:seed": "prisma db seed",
+    "db:studio": "prisma studio",
+    "test": "node --test tests/unit.test.js",
+    "test:flow": "node --test tests/flow.test.js",
+    "postinstall": "prisma generate"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.125.0",
+    "@grammyjs/auto-retry": "^2.0.2",
+    "@grammyjs/runner": "^2.0.3",
+    "@ngrok/ngrok": "^1.7.0",
+    "@prisma/adapter-pg": "^7.10.0",
+    "@prisma/client": "^7.10.0",
+    "express": "^5.2.1",
+    "grammy": "^1.46.0",
+    "pg": "^8.23.0",
+    "prisma": "^7.10.0",
+    "yaml": "^2.9.1"
+  },
+  "overrides": {
+    "deepmerge-ts": "^8.0.2",
+    "mysql2": "^3.24.4"
+  },
+  "allowScripts": {
+    "prisma": true,
+    "@prisma/engines": true
+  }
+}
