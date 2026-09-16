@@ -54,6 +54,15 @@ async function main() {
       secret_token: secret,
       allowed_updates: ALLOWED_UPDATES,
     });
+
+    // Бесплатный хостинг усыпляет сервис без запросов — раз в 10 минут будим сами себя
+    const keepAlive = setInterval(
+      () => {
+        fetch(`${publicUrl}/health`).catch(() => {});
+      },
+      10 * 60 * 1000,
+    );
+    keepAlive.unref();
   } else {
     await bot.api.deleteWebhook();
     try {
