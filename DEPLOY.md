@@ -58,7 +58,7 @@ GitHub, поэтому переносить значения нужно рука
 | `BOT_TOKEN` | токен бота из `.env` |
 | `DATABASE_URL` | строка подключения к базе из `.env` |
 | `ADMIN_IDS` | ваш Telegram ID из `.env` (узнать заново: команда `/id` боту) |
-| `MINI_APP_URL` | адрес меню на Vercel (я его пришлю) |
+| `MINI_APP_URL` | `https://baxt-menu.vercel.app` |
 | `NODE_VERSION` | `22.18.0` |
 
 Необязательные:
@@ -113,12 +113,18 @@ GitHub, поэтому переносить значения нужно рука
 
 ---
 
-## Часть 2. Меню на Vercel (делаю я)
+## Часть 2. Меню на Vercel (уже сделано)
 
-Меню публикуется командой из папки `miniapp`. Адрес вида
-`https://<имя-проекта>.vercel.app` нужно затем вписать на Render в
-переменную `MINI_APP_URL` и перезапустить сервис (**Manual Deploy** →
-**Deploy latest commit**).
+Меню опубликовано по адресу **https://baxt-menu.vercel.app**
+(проект `baxt-menu` в аккаунте Vercel `telegram-bot3`).
+
+Именно этот адрес нужно вписать на Render в переменную `MINI_APP_URL`.
+
+Публикуется меню командой из папки `miniapp`:
+
+```bash
+npx vercel@latest deploy --prod --yes
+```
 
 ---
 
