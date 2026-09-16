@@ -1,0 +1,13 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": "https://baxt-restaurant-bot.onrender.com/api/:path*"
+    },
+    {
+      "source": "/assets/restaurant/:path*",
+      "destination": "https://baxt-restaurant-bot.onrender.com/assets/restaurant/:path*"
+    }
+  ]
+}

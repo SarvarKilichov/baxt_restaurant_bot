@@ -1,4 +1,5 @@
-import { GrammyError } from 'grammy';
+import crypto from 'node:crypto';
+import { GrammyError, webhookCallback } from 'grammy';
 import { run } from '@grammyjs/runner';
 import config, { assertConfig } from './config/default.js';
 import { RestaurantDataError } from './core/restaurant.js';
@@ -38,23 +39,39 @@ async function main() {
     throw error;
   }
 
-  await bot.api.deleteWebhook();
-  try {
-    await bot.api.getUpdates({ limit: 1, timeout: 0 });
-  } catch (error) {
-    if (error instanceof GrammyError && error.error_code === 409) {
-      throw new Error('Этот бот уже запущен в другом окне или на другом компьютере. Остановите его и запустите снова.');
-    }
-    throw error;
-  }
+  // На хостинге (Render) Telegram сам присылает сообщения на наш адрес — webhook.
+  // На своём компьютере бот забирает сообщения сам — long polling.
+  const publicUrl = config.webapp.publicUrl;
+  let webServer;
 
-  const webServer = await startWebServer(bot.api);
+  if (publicUrl) {
+    const secret = crypto.createHash('sha256').update(config.botToken).digest('hex').slice(0, 32);
+    const webhookPath = `/telegram/${secret}`;
+    webServer = await startWebServer(bot.api, {
+      webhook: { path: webhookPath, handler: webhookCallback(bot, 'express', { secretToken: secret }) },
+    });
+    await bot.api.setWebhook(`${publicUrl}${webhookPath}`, {
+      secret_token: secret,
+      allowed_updates: ALLOWED_UPDATES,
+    });
+  } else {
+    await bot.api.deleteWebhook();
+    try {
+      await bot.api.getUpdates({ limit: 1, timeout: 0 });
+    } catch (error) {
+      if (error instanceof GrammyError && error.error_code === 409) {
+        throw new Error('Этот бот уже запущен в другом окне или на другом компьютере. Остановите его и запустите снова.');
+      }
+      throw error;
+    }
+    webServer = await startWebServer(bot.api);
+  }
   log.info(`Веб-сервер Mini App слушает порт ${config.webapp.port}`);
   miniApp.url = await startMiniAppTunnel(config.webapp.port);
 
   setupBotProfile(bot.api, miniApp.url).catch(() => {});
 
-  const runner = run(bot, { runner: { fetch: { allowed_updates: ALLOWED_UPDATES } } });
+  const runner = publicUrl ? null : run(bot, { runner: { fetch: { allowed_updates: ALLOWED_UPDATES } } });
 
   log.info(`✅ Бот @${bot.botInfo.username} запущен: https://t.me/${bot.botInfo.username}`);
   if (miniApp.url) {
@@ -77,7 +94,7 @@ async function main() {
     if (stopping) return;
     stopping = true;
     log.info('Останавливаю бота…');
-    if (runner.isRunning()) await runner.stop();
+    if (runner?.isRunning()) await runner.stop();
     await new Promise((resolve) => webServer.close(resolve));
     await prisma.$disconnect();
     process.exit(0);

@@ -30,9 +30,13 @@ const config = {
   ordersChatId: idList(env.ORDERS_CHAT_ID)[0] ?? null,
   databaseUrl: env.DATABASE_URL?.trim(),
   webapp: {
-    port: Number(env.WEBAPP_PORT) || 3001,
+    // На хостинге порт задаёт сам хостинг через PORT
+    port: Number(env.PORT) || Number(env.WEBAPP_PORT) || 3001,
     // Готовый публичный адрес Mini App, если он уже есть (например, свой домен)
     url: env.MINI_APP_URL?.trim().replace(/\/$/, '') || null,
+    // Публичный адрес самого сервера. На Render он задаётся автоматически (RENDER_EXTERNAL_URL).
+    // Если он есть — бот работает через webhook, без ngrok
+    publicUrl: (env.PUBLIC_URL || env.RENDER_EXTERNAL_URL || '').trim().replace(/\/$/, '') || null,
     ngrokAuthtoken: env.NGROK_AUTHTOKEN?.trim() || null,
     ngrokDomain: env.NGROK_DOMAIN?.trim() || null,
   },
